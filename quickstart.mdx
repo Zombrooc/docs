@@ -32,7 +32,7 @@ A sintaxe do campo classificação irá seguir os seguinte padrões:
   1_10 - Retornará classificações do número 1 ao 10 (1,2,3,4...8,9,10)
   ```
 
-  Para complementar o campo "Classificação" que irá gerar os números iniciais, podemos utilizar o campo nomeclatura para gerar qual definição será utilizada para essa classificação especifica. Logo se houver a necessidade de definir algo como "1ª Posição" ou "1º Colocado", o uso desse campo é o ideal.
+  Para complementar o campo "Classificação" que irá gerar os números iniciais, podemos utilizar o campo "Nomeclatura" para gerar qual definição será utilizada para essa classificação. Logo se houver a necessidade de definir algo como "1ª Posição" ou "1º Colocado", devemos utilizar esse campo.
 
   | Classificação | Nomeclatura |
   | ------------- | ----------- |
@@ -66,6 +66,23 @@ A sintaxe do campo classificação irá seguir os seguinte padrões:
     ```
 
 ### Categoria
+
+O campo "Categoria" irá definir toda a escrita das categorias da classificação. Esse campo permite o uso dos caracteres "|" e "/" que possibilita a criação de combinações de escrita.
+
+- **Categoria simples sem **`|`**nem**  `/` → Retorna a categoria direto, sem combinações ou alterações.
+- **Categoria com** `|`**apenas**  → Cada segmento é uma base para combinações.
+- **Categoria com** `/` **apenas** → Cria uma lista de itens a serem combinados.
+- **Categoria com** `|`**e** `/`**combinados**  → Monta um produto cartesiano, ou seja, irá combinar os segmentos criados com `|` com os itens definidos com `/` .
+
+#### Exemplos
+
+```
+Geral Masculino → Retorna apenas "Geral Masculino"
+Geral | Pro | Master → Retorna as categorias "Geral", "Pro" e "Master" separadamente
+Geral | Masculino/Feminino → Retornas as categorias "Geral Masculino", "Geral Feminino"
+```
+
+#### 
 
 <AccordionGroup>
   <Accordion title="Install our Github app" icon="message-bot">
