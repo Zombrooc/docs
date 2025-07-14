@@ -12,6 +12,15 @@ A estrutura da planilha deve seguir uma padrão único para todos os casos atuai
 | Produto | Quantidade | Classificação | Nomeclatura | Categoria | Observação |
 | ------- | ---------- | ------------- | ----------- | --------- | ---------- |
 
+
+| Coluna         | Descrição                                                                 |
+|----------------|---------------------------------------------------------------------------|
+| Quantidade     | Quantidade de vezes que cada classificação deve ser repetida                |
+| Classificação  | Pode ser um número (`1`), intervalo (`1_3`), lista (`1,3,5`) ou texto (`Campeão,Vice-Campeão,...`) |
+| Nomenclatura   | Define se será "posição", "lugar", "colocação", etc                      |
+| Categoria      | Utiliza uma sintaxe específica para expansão dinâmica para definir as categorias |
+| Observações    | Campo opcional para mensagens adicionais                                 |
+
 <Warning>
   Lembre-se: Caso a planilha esteja fora desse padrão a plataforma não irá reconhecer os campos necessários para a criação do arquivo .csv necessário para a impressão e conferência.
 </Warning>
@@ -33,6 +42,8 @@ A sintaxe do campo classificação irá seguir os seguinte padrões:
   ```
 
   Para complementar o campo "Classificação" que irá gerar os números iniciais, podemos utilizar o campo "Nomeclatura" para gerar qual definição será utilizada para essa classificação. Logo se houver a necessidade de definir algo como "1ª Posição" ou "1º Colocado", devemos utilizar esse campo.
+
+  #### Exemplo
 
   | Classificação | Nomeclatura |
   | ------------- | ----------- |
@@ -74,7 +85,7 @@ O campo "Categoria" irá definir toda a escrita das categorias da classificaçã
 - **Categoria com** `/` **apenas** → Cria uma lista de itens a serem combinados.
 - **Categoria com** `|`**e** `/`**combinados**  → Monta um produto cartesiano, ou seja, irá combinar os segmentos criados com `|` com os itens definidos com `/` .
 
-#### Exemplos
+#### Exemplo
 
 | Categoria                   | | |
 | --------------------------- | --- | --- |
