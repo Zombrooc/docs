@@ -51,7 +51,7 @@ A sintaxe do campo classificação irá seguir os seguinte padrões:
   ...
   5ª Posição
   ```
-  - **Valores individuais:** Diferente dos intervalos, itens individuais são aqueles que não seguem uma ordem númerica especifica, sendo utilizados quando há classificações como "Campeão", "Vice-Campeão" e afins. Nesse caso utilizamos o símbolo "," (Vírgula)  para definir cada elemento que queremos.
+  - **Valores individuais:** Diferente dos intervalos, itens individuais são aqueles que não seguem uma ordem númerica especifica, sendo utilizados quando há classificações como "Campeão", "Vice-Campeão" e afins. Nesse caso utilizamos o símbolo "," (Vírgula)  para definir cada elemento que queremos e não utilizaremos o campo **Nomeclatura**.
 
     | Classificação                   | Nomeclatura |
     | ------------------------------- | ----------- |
@@ -69,15 +69,28 @@ A sintaxe do campo classificação irá seguir os seguinte padrões:
 
 O campo "Categoria" irá definir toda a escrita das categorias da classificação. Esse campo permite o uso dos caracteres "|" e "/" que possibilita a criação de combinações de escrita.
 
-- \*\*Categoria simples sem \*\*`|`**nem**  `/` → Retorna a categoria direto, sem combinações ou alterações.
+- **Categoria simples sem** `|`**nem**  `/` → Retorna a categoria direto, sem combinações ou alterações.
 - **Categoria com** `|`**apenas**  → Cada segmento é uma base para combinações.
 - **Categoria com** `/` **apenas** → Cria uma lista de itens a serem combinados.
 - **Categoria com** `|`**e** `/`**combinados**  → Monta um produto cartesiano, ou seja, irá combinar os segmentos criados com `|` com os itens definidos com `/` .
 
 #### Exemplos
 
+| Categoria                   | | |
+| --------------------------- | --- | --- |
+| Geral Masculino             | | |
+| Geral \| Pro \| Master      | | |
+| Geral \| Masculino/Feminino | | |
+
+Resultado:
+
 ```
-Geral Masculino → Retorna apenas "Geral Masculino"
-Geral | Pro | Master → Retorna as categorias "Geral", "Pro" e "Master" separadamente
-Geral | Masculino/Feminino → Retornas as categorias "Geral Masculino", "Geral Feminino"
+Geral Masculino
+----------------------------
+Geral
+Pro 
+Master
+----------------------------
+Geral Masculino
+Geral Feminino
 ```
